@@ -1,22 +1,22 @@
 var initCode = {
     
-    "ace/mode/c_cpp" :    
+    "c" :    
     "#include <stdio.h>\n" +
     "int main() {\n" +
     "\tprintf(\"hello world!\\n\");\n" +
-    "\treturn 0;" +
+    "\treturn 0;\n" +
     "}\n",
 
-    "ace/mode/python" :
+    "python" :
     "print \"Hello World!\"\n",
 
-    "ace/mode/ruby" :
+    "ruby" :
     "p 'hello'",
 
-    "ace/mode/javascript" :
+    "javascript" :
     "console.log('HelloWorld!');",
 
-    "ace/mode/haskell" :
+    "haskell" :
     "module Main where\n" +
     "main :: IO ()\n" +
     "main = putStrLn \"Hello, World!\"\n"
@@ -25,7 +25,7 @@ var initCode = {
 var state = {
     "user" : "fyp_demo",
     "mode" : "code",
-    "language" : "C",
+    "language" : "c",
     "code" : initCode["ace/mode/c_cpp"],
     "stdin" : "",
     "stdout" : "",
@@ -36,16 +36,18 @@ var state = {
 $(function(){
 
     editor = ace.edit("editor_main");
-    editor.setTheme("ace/theme/chrome");
     editor.getSession().setMode("ace/mode/c_cpp");
     editor.getSession().setTabSize(2);
-    editor.setValue(initCode["ace/mode/c_cpp"]);
+    editor.setValue(initCode["c"]);
 
     $( "#languageMenu" ).click(function(event) {
         var languageMode = event.target.getAttribute("value");
         editor.getSession().setMode(languageMode);
-        editor.setValue(initCode[languageMode], 1);
-        state["code"] = initCode[languageMode];
+        if (state["mode"] == "code") {
+            initCode[state["language"]] = editor.getSession().getValue();
+        } else {
+            initCode[state["language"]] = state["code"];
+        }
         switch(languageMode){
             case "ace/mode/c_cpp":
                 state["language"] = "c"; 
@@ -63,6 +65,8 @@ $(function(){
                 state["language"] = "haskell";
             break;
         }
+        editor.setValue(initCode[state["language"]], 1);
+        state["code"] = initCode[state["language"]];
         $( "#code" ).trigger("click");
         $( "#language" ).text(state["language"]);
     });
