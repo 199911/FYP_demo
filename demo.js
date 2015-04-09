@@ -58,6 +58,7 @@ $(function(){
             break;
             case "ace/mode/javascript":
                 state["language"] = "javascript"; 
+            break;
             case "ace/mode/haskell" :
                 state["language"] = "haskell";
             break;
