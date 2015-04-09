@@ -14,7 +14,12 @@ var initCode = {
     "p 'hello'",
 
     "ace/mode/javascript" :
-    "console.log('HelloWorld!');"
+    "console.log('HelloWorld!');",
+
+    "ace/mode/haskell" :
+    "module Main where\n" +
+    "main :: IO ()\n" +
+    "main = putStrLn \"Hello, World!\"\n"
 };
 
 var state = {
@@ -53,6 +58,8 @@ $(function(){
             break;
             case "ace/mode/javascript":
                 state["language"] = "javascript"; 
+            case "ace/mode/haskell" :
+                state["language"] = "haskell";
             break;
         }
         $( "#code" ).trigger("click");
