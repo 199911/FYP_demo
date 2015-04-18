@@ -3,23 +3,23 @@ var initCode = {
     "c" :    
     "#include <stdio.h>\n" +
     "int main() {\n" +
-    "\tprintf(\"hello world!\\n\");\n" +
+    "\tprintf(\"Hello C language!\\n\");\n" +
     "\treturn 0;\n" +
     "}\n",
 
     "python" :
-    "print \"Hello World!\"\n",
+    "print \"Hello Python!\"\n",
 
     "ruby" :
-    "p 'hello'",
+    "p 'Hello Ruby!'",
 
     "javascript" :
-    "console.log('HelloWorld!');",
+    "console.log('Hello Javascript!');",
 
     "haskell" :
     "module Main where\n" +
     "main :: IO ()\n" +
-    "main = putStrLn \"Hello, World!\"\n"
+    "main = putStrLn \"Hello, Haskell!\"\n"
 };
 
 var state = {
