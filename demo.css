@@ -1,0 +1,12 @@
+
+#editor_main
+{   
+    position: relative;
+    height: 300px;
+    font-size: 16px;
+}
+#empty_row 
+{ 
+    position: relative;
+    height:20px; 
+}
